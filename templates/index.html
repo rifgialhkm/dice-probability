@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Peluang Dadu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: white;
+            transition: border-color 0.3s;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            resize: vertical;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fa-solid fa-dice" aria-hidden="true"></i> Kalkulator Peluang Dadu</h1>
+        <p class="subtitle">Hitung peluang kejadian dengan langkah-langkah lengkap</p>
+
+        <form id="calculatorForm">
+            
+            <div class="form-group">
+                <label for="soalInput">Masukkan Soal Anda:</label>
+                <textarea id="soalInput" name="soalInput" rows="4" placeholder="Contoh: Dua buah dadu dilemparkan. Berapa peluang munculnya jumlah 8 atau 10?"></textarea>
+            </div>
+
+            <div class="button-group">
+                <button type="submit"><i class="fa-solid fa-calculator" aria-hidden="true"></i> Hitung Peluang</button>
+                <button type="button" class="reset-btn" onclick="resetForm()"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> Reset</button>
+            </div>
+        </form>
+
+        <div id="loadingIndicator" style="display: none;"><p><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Menghitung...</p></div>
+        <div id="errorMessage" style="display: none;"><div class="error-box"><strong><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Terjadi Kesalahan:</strong> <span id="errorText"></span></div></div>
+        <div class="result-section" id="resultSection">
+            <div class="result-title">Hasil Perhitungan</div>
+            <div id="stepsContainer"></div>
+            <hr>
+            <div class="note" id="conclusionContainer"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
